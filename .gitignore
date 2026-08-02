@@ -1,0 +1,74 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Model weights (too large for git)
+*.pt
+*.bin
+*.safetensors
+
+# Model/feature caches
+**/cache/
+
+# Training artifacts
+src/experiments/
+src/wandb/
+src/figure/
+src/glm-4-voice-decoder/
+core.*
+
+# Audio files (exclude everywhere except docs/audio/)
+*.wav
+*.mp3
+*.flac
+!docs/audio/**/*.wav
+!docs/audio/**/*.mp3
+!docs/audio/**/*.flac
+
+# OS
+.DS_Store
+._.DS_Store
+
+# Gradio runtime cache
+.gradio/
+
+# Logs, outputs, figures
+src/figures/
+
+
+# Retired scripts
+src/dataset_creation/retired/
+src/retired/
+src/integration/retired/
+src/integration/experiment_face/
+src/eval/retired/
+src/eval/generate_responses/retired/
+src/eval/generate_responses/sensing/retired/
+
+# Personal utility scripts (not part of public API)
+src/prepare_demo_audio.py
+
+# Discrete-label ablation scripts (incremental variants of train_sympatheia.py /
+# inference_sympatheia.py; omitted for simplicity)
+src/train_sympatheia_discrete.py
+src/inference_sympatheia_discrete.py
+
+# Exploratory analysis packages (not part of the published pipeline)
+src/offanchor/
+src/errana/
+
+# Pickle caches
+*.pkl
+
+# IDE
+.vscode/
+.idea/
+
+# Secrets
+.env
+*.env

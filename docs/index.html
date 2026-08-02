@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sympatheia: Emotionally Adaptive Voice Assistant with Continuous Affect Conditioning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== Navigation ===== -->
+<nav>
+  <span class="nav-brand rainbow-text">Sympatheia</span>
+  <ul class="nav-links">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#neutral">Neutral Queries</a></li>
+    <li><a href="#emotional">Emotional Queries</a></li>
+    <li><a href="#interpolation">Interpolation</a></li>
+    <li><a href="#dataset">Dataset</a></li>
+  </ul>
+</nav>
+
+<!-- ===== Hero ===== -->
+<section id="hero">
+  <div class="hero-inner">
+    <h1 class="hero-title">
+      <span class="rainbow-text">Sympatheia</span>: Emotionally Adaptive<br>
+      Voice Assistant with<br>
+      Continuous Affect Conditioning
+    </h1>
+    <p class="hero-authors">Anonymous Submission</p>
+    <p class="hero-abstract">
+      We introduce Sympatheia, a speech-to-speech dialogue framework conditioned on affect inferred
+      from the user's speech and explicit valence–arousal (VA) control from multimodal sensing modules.
+      Sympatheia outperforms speech conversational baselines in generating responses that are both
+      semantically appropriate and emotionally aligned. A shared VA interface integrates emotion
+      estimates from facial expression, biosignals, and textual affect descriptions, improving
+      response alignment when speech provides limited emotional evidence.
+    </p>
+    <div class="badge-row">
+      <a class="badge" href="https://anonymous.4open.science/r/sympatheia-9327" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3C5.37.3 0 5.67 0 12.3c0 5.3 3.44 9.8 8.2 11.38.6.1.82-.26.82-.57l-.02-2.23c-3.34.73-4.04-1.4-4.04-1.4-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.23 1.84 1.23 1.07 1.84 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18.77.84 1.23 1.9 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22l-.01 3.29c0 .31.2.68.82.56C20.56 22.1 24 17.6 24 12.3 24 5.67 18.63.3 12 .3z"/></svg>
+        Code
+      </a>
+      <a class="badge" href="https://anonymous.4open.science/r/sympatheia-9327/sympatheia.pdf" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Paper
+      </a>
+      <a class="badge" href="https://huggingface.co/datasets/anonymous2222/Sympatheia-18k" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        Sympatheia-18K
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Overview ===== -->
+<section id="overview">
+  <div class="container">
+    <h2 class="section-title">System Overview</h2>
+    <p class="section-sub">Sympatheia combines implicit affect inference from user speech with optional explicit control through a continuous valence–arousal (VA) interface. Optional pluggable sensing modules (facial expression, EEG/biosignals, and textual affect descriptions) feed into the same VA interface, enabling emotionally aligned spoken responses even when speech cues alone are subtle or ambiguous.</p>
+    <figure class="overview-img-wrap">
+      <img src="img/overview.png" alt="Sympatheia system overview">
+    </figure>
+  </div>
+</section>
+
+<!-- ===== Neutral Query Comparison ===== -->
+<section id="neutral">
+  <div class="container">
+    <h2 class="section-title">Example Responses to Neutral Queries with Emotion Conditioning</h2>
+    <p class="section-sub">
+      The user speaks a neutral question. All models receive the target labels for user emotion via system prompt.
+      This demonstrates how models adapt to emotional tone even in the absence of semantic or acoustic cues in speech.
+    </p>
+
+    <div class="emotion-tabs" id="neutral-tabs"></div>
+    <div id="neutral-panels"></div>
+  </div>
+</section>
+
+<!-- ===== Emotional Query Comparison ===== -->
+<section id="emotional">
+  <div class="container">
+    <h2 class="section-title">Example Responses to Emotional Queries</h2>
+    <p class="section-sub">
+      The user's voice itself carries emotion. No model receives emotion context in its system
+      prompt, each processes the same emotionally-expressive audio query without guidance,
+      testing how well models show tonal adaptation from semantic and acoustic cues in speech.
+    </p>
+
+    <div class="emotion-tabs" id="emotional-tabs"></div>
+    <div id="emotional-panels"></div>
+  </div>
+</section>
+
+<!-- ===== Interpolation ===== -->
+<section id="interpolation">
+  <div class="container">
+    <h2 class="section-title">Continuous Emotion Interpolation</h2>
+    <p class="section-sub">
+      Sympatheia operates in continuous VA space, enabling smooth
+      blending between any two emotional states. The same query audio is used for all five responses;
+      valence and arousal are linearly interpolated between <strong>Happy</strong> (V=+0.85, A=+0.35)
+      and <strong>Sad</strong> (V=−0.75, A=−0.65), and between <strong>Anxious</strong> (V=−0.40, A=+0.65)
+      and <strong>Relaxed</strong> (V=+0.25, A=−0.60), demonstrating fine-grained tonal control.
+    </p>
+
+    <div class="interp-input-row">
+      <span class="query-label">Input query</span>
+      <audio controls src="audio/interpolation/input_audio.wav"></audio>
+    </div>
+
+    <div id="interp-sets"></div>
+  </div>
+</section>
+
+<!-- ===== Dataset ===== -->
+<section id="dataset">
+  <div class="container">
+    <h2 class="section-title">Sympatheia-18K Dataset Samples</h2>
+    <p class="section-sub">
+      Sympatheia-18K is a synthesized dataset of emotion-controlled speech-to-speech dialogue pairs.
+      Each sample is conditioned on one of 12 target emotions.
+      The dataset includes two splits. <strong>Emotional Split (12k):</strong> Emotion-matched query-response pairs;
+      <strong>Neutral Split (6k):</strong> Neutral queries paired with all 12 emotional response variants.
+    </p>
+
+    <div class="dataset-split-label">Emotional Split</div>
+    <div class="dataset-grid" id="dataset-grid-emotional"></div>
+
+    <div class="dataset-split-label" style="margin-top:2.5rem;">Neutral Split</div>
+    <div class="dataset-shared-query">
+      <span class="audio-row-label">Query (shared)</span>
+      <audio controls src="audio/dataset/neutral/query.wav"></audio>
+      <div id="dataset-neutral-query-transcript"></div>
+    </div>
+    <div class="dataset-grid" id="dataset-grid-neutral"></div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <p>Sympatheia: Emotionally Adaptive Voice Assistant &nbsp;&middot;&nbsp; Anonymous Submission &nbsp;&middot;&nbsp;
+     <a href="https://anonymous.4open.science/r/sympatheia-9327">Code</a>
+  </p>
+</footer>
+
+<!-- ===== Script ===== -->
+<script>
+// ---------------------------------------------------------------------------
+// Static data
+// ---------------------------------------------------------------------------
+const EMOTIONS_DATA = [
+  { name: "Angry",      valence: -0.85, arousal:  0.85 },
+  { name: "Anxious",    valence: -0.40, arousal:  0.65 },
+  { name: "Content",    valence:  0.60, arousal: -0.20 },
+  { name: "Disgusted",  valence: -0.82, arousal: -0.20 },
+  { name: "Excited",    valence:  0.75, arousal:  0.90 },
+  { name: "Frustrated", valence: -0.80, arousal:  0.35 },
+  { name: "Happy",      valence:  0.85, arousal:  0.35 },
+  { name: "Neutral",    valence:  0.00, arousal:  0.00 },
+  { name: "Relaxed",    valence:  0.25, arousal: -0.60 },
+  { name: "Sad",        valence: -0.75, arousal: -0.65 },
+  { name: "Surprised",  valence:  0.10, arousal:  0.80 },
+  { name: "Tired",      valence: -0.15, arousal: -0.75 },
+];
+
+const INTERP_SETS = [
+  {
+    id: "happy-sad",
+    from: "Happy", to: "Sad",
+    steps: [
+      { file: "happy_sad/happy_100.wav",   label: "Happy (100%)",        valence:  0.85, arousal:  0.35 },
+      { file: "happy_sad/blend_75_25.wav", label: "75% Happy / 25% Sad", valence:  0.45, arousal:  0.10 },
+      { file: "happy_sad/blend_50_50.wav", label: "50% / 50%",           valence:  0.05, arousal: -0.15 },
+      { file: "happy_sad/blend_25_75.wav", label: "25% Happy / 75% Sad", valence: -0.35, arousal: -0.40 },
+      { file: "happy_sad/sad_100.wav",     label: "Sad (100%)",           valence: -0.75, arousal: -0.65 },
+    ],
+  },
+  {
+    id: "anxious-relaxed",
+    from: "Anxious", to: "Relaxed",
+    steps: [
+      { file: "anxious_relaxed/anxious_100.wav",  label: "Anxious (100%)",             valence: -0.40, arousal:  0.65 },
+      { file: "anxious_relaxed/blend_75_25.wav",  label: "75% Anxious / 25% Relaxed",  valence: -0.24, arousal:  0.34 },
+      { file: "anxious_relaxed/blend_50_50.wav",  label: "50% / 50%",                  valence: -0.08, arousal:  0.03 },
+      { file: "anxious_relaxed/blend_25_75.wav",  label: "25% Anxious / 75% Relaxed",  valence:  0.09, arousal: -0.29 },
+      { file: "anxious_relaxed/relaxed_100.wav",  label: "Relaxed (100%)",              valence:  0.25, arousal: -0.60 },
+    ],
+  },
+];
+
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+function escHtml(s) {
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+                  .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+}
+
+function fmtVA(v) { return (v >= 0 ? "+" : "") + v.toFixed(2); }
+
+// ---------------------------------------------------------------------------
+// Build comparison section (neutral or emotional) — two examples per emotion
+// ---------------------------------------------------------------------------
+function buildComparison(prefix, tabsEl, panelsEl, modelDefs) {
+  let currentEx = "ex1"; // shared state: which example is selected across all emotion tabs
+
+  EMOTIONS_DATA.forEach((emo, i) => {
+    const key = emo.name.toLowerCase();
+
+    // Emotion tab button
+    const btn = document.createElement("button");
+    btn.className = "etab-btn" + (i === 0 ? " active" : "");
+    btn.dataset.emo = key;
+    btn.textContent = emo.name;
+    btn.addEventListener("click", () => {
+      tabsEl.querySelectorAll(".etab-btn").forEach(b => b.classList.remove("active"));
+      panelsEl.querySelectorAll(".emotion-panel").forEach(p => p.classList.remove("active"));
+      btn.classList.add("active");
+      const newPanel = document.getElementById(`${prefix}-panel-${key}`);
+      newPanel.classList.add("active");
+      // Sync example sub-tabs to whichever example was last selected
+      newPanel.querySelectorAll(".extab-btn").forEach(b =>
+        b.classList.toggle("active", b.dataset.ex === currentEx));
+      newPanel.querySelectorAll(".example-pane").forEach(p =>
+        p.classList.toggle("active", p.id === `${prefix}-${key}-${currentEx}`));
+    });
+    tabsEl.appendChild(btn);
+
+    // Panel
+    const panel = document.createElement("div");
+    panel.className = "emotion-panel" + (i === 0 ? " active" : "");
+    panel.id = `${prefix}-panel-${key}`;
+
+    function makeExPane(ex) {
+      const cardsHtml = modelDefs.map(m =>
+        `<div class="model-card ${m.css}">
+          <div class="model-card-header">${m.label}</div>
+          <div class="model-card-body" id="${prefix}-${key}-${ex}-${m.id}">
+            <audio controls src="audio/${prefix}/${key}/${ex}/${m.file}"></audio>
+          </div>
+        </div>`
+      ).join("");
+      return `
+        <div class="query-block">
+          <span class="query-label">User Query</span>
+          <audio controls src="audio/${prefix}/${key}/${ex}/query.wav"></audio>
+        </div>
+        <div class="models-grid">${cardsHtml}</div>`;
+    }
+
+    panel.innerHTML = `
+      <div class="example-tabs">
+        <button class="extab-btn active" data-ex="ex1">Example 1</button>
+        <button class="extab-btn" data-ex="ex2">Example 2</button>
+        <button class="extab-btn" data-ex="ex3">Example 3</button>
+      </div>
+      <div class="example-pane active" id="${prefix}-${key}-ex1">${makeExPane("ex1")}</div>
+      <div class="example-pane" id="${prefix}-${key}-ex2">${makeExPane("ex2")}</div>
+      <div class="example-pane" id="${prefix}-${key}-ex3">${makeExPane("ex3")}</div>
+    `;
+
+    // Example sub-tab click handlers
+    panel.querySelectorAll(".extab-btn").forEach(exBtn => {
+      exBtn.addEventListener("click", () => {
+        currentEx = exBtn.dataset.ex; // track globally for this section
+        panel.querySelectorAll(".extab-btn").forEach(b => b.classList.remove("active"));
+        panel.querySelectorAll(".example-pane").forEach(p => p.classList.remove("active"));
+        exBtn.classList.add("active");
+        document.getElementById(`${prefix}-${key}-${exBtn.dataset.ex}`).classList.add("active");
+      });
+    });
+
+    panelsEl.appendChild(panel);
+  });
+}
+
+const NEUTRAL_MODELS = [
+  { id: "sym",  label: "Sympatheia",  file: "sympatheia_v2.wav", css: "sympatheia", textKey: "sympatheia_v2_text" },
+  { id: "base", label: "GLM-4-Voice", file: "base.wav",          css: "base",       textKey: "base_text" },
+  { id: "kimi", label: "Kimi Audio",  file: "kimi.wav",          css: "kimi",       textKey: "kimi_text" },
+  { id: "qwen", label: "Qwen3-Omni",  file: "qwen3omni.wav",     css: "qwen",       textKey: "qwen3omni_text" },
+  { id: "open", label: "OpenS2S",     file: "opens2s.wav",       css: "opens2s",    textKey: "opens2s_text" },
+];
+
+const EMOTIONAL_MODELS = [
+  { id: "sym",  label: "Sympatheia",  file: "sympatheia_v2.wav", css: "sympatheia", textKey: "sympatheia_v2_text" },
+  { id: "base", label: "GLM-4-Voice", file: "base.wav",          css: "base",       textKey: "base_text" },
+  { id: "kimi", label: "Kimi Audio",  file: "kimi.wav",          css: "kimi",       textKey: "kimi_text" },
+  { id: "qwen", label: "Qwen3-Omni",  file: "qwen3omni.wav",     css: "qwen",       textKey: "qwen3omni_text" },
+  { id: "open", label: "OpenS2S",     file: "opens2s.wav",       css: "opens2s",    textKey: "opens2s_text" },
+];
+
+buildComparison("neutral",   document.getElementById("neutral-tabs"),   document.getElementById("neutral-panels"),   NEUTRAL_MODELS);
+buildComparison("emotional", document.getElementById("emotional-tabs"),  document.getElementById("emotional-panels"), EMOTIONAL_MODELS);
+
+// Inject transcripts after manifest loads
+fetch("audio/manifest.json")
+  .then(r => r.json())
+  .then(manifest => {
+    function injectTranscripts(records, prefix, modelDefs) {
+      records.forEach(rec => {
+        const key = rec.emotion.toLowerCase();
+        ["ex1", "ex2", "ex3"].forEach(ex => {
+          const texts = rec[ex] || {};
+          modelDefs.forEach(m => {
+            const txt = texts[m.textKey];
+            if (!txt) return;
+            const body = document.getElementById(`${prefix}-${key}-${ex}-${m.id}`);
+            if (!body) return;
+            const det = document.createElement("details");
+            det.className = "transcript";
+            det.innerHTML = `<summary>Transcript</summary><p class="transcript-text">${escHtml(txt)}</p>`;
+            body.appendChild(det);
+          });
+        });
+      });
+    }
+    injectTranscripts(manifest.neutral,   "neutral",   NEUTRAL_MODELS);
+    injectTranscripts(manifest.emotional, "emotional", EMOTIONAL_MODELS);
+
+    // Dataset transcripts
+    if (manifest.dataset) {
+      (manifest.dataset.emotional || []).forEach(rec => {
+        const key = rec.emotion.toLowerCase();
+        const container = document.getElementById(`dataset-transcript-emotional-${key}`);
+        if (!container) return;
+        if (rec.query_text) {
+          const det = document.createElement("details");
+          det.className = "transcript";
+          det.innerHTML = `<summary>Query Transcript</summary><p class="transcript-text">${escHtml(rec.query_text)}</p>`;
+          container.appendChild(det);
+        }
+        if (rec.response_text) {
+          const det = document.createElement("details");
+          det.className = "transcript";
+          det.innerHTML = `<summary>Response Transcript</summary><p class="transcript-text">${escHtml(rec.response_text)}</p>`;
+          container.appendChild(det);
+        }
+      });
+      const neutralQueryContainer = document.getElementById("dataset-neutral-query-transcript");
+      (manifest.dataset.neutral || []).forEach((rec, idx) => {
+        const key = rec.emotion.toLowerCase();
+        if (idx === 0 && neutralQueryContainer && rec.query_text) {
+          const det = document.createElement("details");
+          det.className = "transcript";
+          det.innerHTML = `<summary>Query Transcript</summary><p class="transcript-text">${escHtml(rec.query_text)}</p>`;
+          neutralQueryContainer.appendChild(det);
+        }
+        const container = document.getElementById(`dataset-transcript-neutral-${key}`);
+        if (!container) return;
+        if (rec.response_text) {
+          const det = document.createElement("details");
+          det.className = "transcript";
+          det.innerHTML = `<summary>Response Transcript</summary><p class="transcript-text">${escHtml(rec.response_text)}</p>`;
+          container.appendChild(det);
+        }
+      });
+    }
+  })
+  .catch(() => { /* manifest not yet present — audio still plays */ });
+
+// ---------------------------------------------------------------------------
+// Interpolation — multiple sets
+// ---------------------------------------------------------------------------
+(function buildInterp() {
+  const setsEl = document.getElementById("interp-sets");
+  INTERP_SETS.forEach(set => {
+    const wrap = document.createElement("div");
+    wrap.style.marginBottom = "2rem";
+
+    const arrow = document.createElement("div");
+    arrow.className = `interp-arrow interp-arrow--${set.id}`;
+    arrow.innerHTML = `<span>${set.from} - ${set.to}</span>`;
+
+    const grid = document.createElement("div");
+    grid.className = `interp-steps interp-steps--${set.id}`;
+
+    set.steps.forEach(step => {
+      const card = document.createElement("div");
+      card.className = "interp-card";
+      card.innerHTML = `
+        <div class="interp-bar"></div>
+        <div class="interp-label">${step.label}</div>
+        <div class="interp-va">V:${fmtVA(step.valence)} A:${fmtVA(step.arousal)}</div>
+        <audio controls src="audio/interpolation/${step.file}"></audio>
+      `;
+      grid.appendChild(card);
+    });
+
+    wrap.appendChild(arrow);
+    wrap.appendChild(grid);
+    setsEl.appendChild(wrap);
+  });
+})();
+
+// ---------------------------------------------------------------------------
+// Dataset — two grids (emotional split + neutral split)
+// ---------------------------------------------------------------------------
+function buildDatasetGrid(gridId, queryPath, responsePath) {
+  const grid = document.getElementById(gridId);
+  EMOTIONS_DATA.forEach(emo => {
+    const key = emo.name.toLowerCase();
+    const card = document.createElement("div");
+    card.className = `dataset-card emo-${key}`;
+    card.innerHTML = `
+      <div class="dataset-card-header">
+        ${emo.name}
+      </div>
+      <div class="dataset-card-body">
+        <div class="audio-row">
+          <span class="audio-row-label">Query</span>
+          <audio controls src="${queryPath(key)}"></audio>
+        </div>
+        <div class="audio-row">
+          <span class="audio-row-label">Response</span>
+          <audio controls src="${responsePath(key)}"></audio>
+        </div>
+        <div id="dataset-transcript-emotional-${key}"></div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+buildDatasetGrid(
+  "dataset-grid-emotional",
+  key => `audio/dataset/emotional/${key}/query.wav`,
+  key => `audio/dataset/emotional/${key}/response.wav`
+);
+// Neutral split: response-only cards (shared query shown above the grid)
+EMOTIONS_DATA.forEach(emo => {
+  const key = emo.name.toLowerCase();
+  const grid = document.getElementById("dataset-grid-neutral");
+  const card = document.createElement("div");
+  card.className = `dataset-card emo-${key}`;
+  card.innerHTML = `
+    <div class="dataset-card-header">
+      ${emo.name}
+    </div>
+    <div class="dataset-card-body">
+      <div class="audio-row">
+        <span class="audio-row-label">Response</span>
+        <audio controls src="audio/dataset/neutral/${key}/response.wav"></audio>
+      </div>
+      <div id="dataset-transcript-neutral-${key}"></div>
+    </div>
+  `;
+  grid.appendChild(card);
+});
+
+</script>
+</body>
+</html>
